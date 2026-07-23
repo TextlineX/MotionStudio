@@ -1,12 +1,55 @@
-/* Local deployment: the app is a single tool, not a product switcher. */
+/* Motion Studio local branding and interaction polish. */
+:root { color-scheme: dark; }
+
 .product-switcher [role="button"] {
+  position: relative !important;
+  width: 156px !important;
+  height: 40px !important;
+  padding: 0 !important;
   cursor: default !important;
   pointer-events: none !important;
+  border-color: rgba(255, 255, 255, .09) !important;
+  background: rgba(18, 20, 19, .94) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .24) !important;
+}
+.product-switcher [role="button"] > * { display: none !important; }
+.product-switcher [role="button"]::before {
+  content: "M";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #f4ffe4, #83e63a);
+  color: #10210d;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: -.08em;
+}
+.product-switcher [role="button"]::after {
+  content: "Motion Studio";
+  position: absolute;
+  left: 42px;
+  top: 0;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  color: #f4f7f2;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -.01em;
 }
 .product-switcher [role="menu"],
-.product-switcher [role="menu"] * {
-  display: none !important;
-}
-.product-switcher [role="button"] > svg:last-child {
-  display: none !important;
-}
+.product-switcher [role="menu"] * { display: none !important; }
+
+button { transition: background-color .16s ease, border-color .16s ease, color .16s ease, transform .16s ease; }
+button:focus-visible, input:focus-visible { outline: 2px solid #b9ff5f !important; outline-offset: 2px; }
+button[aria-pressed="true"] img { box-shadow: 0 0 0 2px #d4ff86, 0 0 18px rgba(154, 255, 68, .22); }
+.parameter-slider { border-radius: 14px; overflow: hidden; background: #1a1d1b; }
+.parameter-slider-control { accent-color: #abff48; }
+.parameter-slider-content { background: linear-gradient(90deg, rgba(174,255,78,.12), transparent 64%); }
+* { scrollbar-color: #394138 transparent; scrollbar-width: thin; }
