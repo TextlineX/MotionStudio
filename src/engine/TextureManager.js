@@ -1,0 +1,7 @@
+export class TextureManager {
+  constructor(gl) { this.gl=gl; this.texture=this.create(); this.aspect=1.7; this.makeFallback(); }
+  create(){const {gl}=this,t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);return t;}
+  upload(source){const {gl}=this;gl.bindTexture(gl.TEXTURE_2D,this.texture);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,source);gl.generateMipmap(gl.TEXTURE_2D);this.aspect=source.width/source.height||1;}
+  makeFallback(){const c=document.createElement('canvas');c.width=1000;c.height=560;const p=c.getContext('2d');p.fillStyle='#fff';p.beginPath();p.moveTo(55,305);p.bezierCurveTo(155,272,190,202,232,86);p.bezierCurveTo(256,210,270,213,322,269);p.bezierCurveTo(377,207,408,142,457,48);p.bezierCurveTo(500,167,525,211,614,273);p.bezierCurveTo(676,221,702,160,731,88);p.bezierCurveTo(758,192,785,231,835,272);p.bezierCurveTo(878,310,919,304,958,305);p.bezierCurveTo(867,339,804,388,742,497);p.bezierCurveTo(710,393,683,363,619,310);p.bezierCurveTo(570,383,527,439,459,548);p.bezierCurveTo(407,430,362,368,315,310);p.bezierCurveTo(265,378,226,408,186,497);p.bezierCurveTo(151,389,105,340,55,305);p.fill();this.upload(c);}
+  dispose(){this.gl.deleteTexture(this.texture);}
+}

@@ -1,0 +1,12 @@
+/* Local deployment: the app is a single tool, not a product switcher. */
+.product-switcher [role="button"] {
+  cursor: default !important;
+  pointer-events: none !important;
+}
+.product-switcher [role="menu"],
+.product-switcher [role="menu"] * {
+  display: none !important;
+}
+.product-switcher [role="button"] > svg:last-child {
+  display: none !important;
+}
