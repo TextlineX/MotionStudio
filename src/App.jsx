@@ -11,12 +11,12 @@ const smoke = [['内部扭曲','innerDistortion',0,1],['外部扭曲','outerDist
 function IconButton({ label, children, onClick }) { return <button className="icon-button" aria-label={label} onClick={onClick}>{children}</button>; }
 
 export default function App() {
-  const [settings, setSettings] = useState(defaults); const [file, setFile] = useState(null); const [exporting, setExporting] = useState(false); const rendererRef = useRef(null);
+  const [settings, setSettings] = useState(defaults); const [file, setFile] = useState(null); const defaultLogo = '/mh.svg'; const [exporting, setExporting] = useState(false); const rendererRef = useRef(null);
   const update = key => value => setSettings(current => ({ ...current, [key]: value }));
   const exportFile = type => { const api = new ExportManager(rendererRef.current.canvas); if (type === 'png') api.png(); else if (type === 'react') api.reactComponent(settings); else { setExporting(true); api.video().finally(() => setExporting(false)); } };
   const parameters = settings.effect === 'liquidMetal' ? metal : smoke;
   return <main className="app-shell">
-    <section className="canvas-area" aria-label="动画预览"><header className="topbar"><button className="brand"><span className="brand-mark">⌁</span><strong>loqo animations</strong><span className="chevron">⌄</span></button><button className="fit-button">自适应 <span>⌄</span></button></header><ShaderLogo settings={settings} imageFile={file} rendererRef={rendererRef}/><div className="stage-label">WebGL2 · React 重构预览</div></section>
+    <section className="canvas-area" aria-label="动画预览"><header className="topbar"><button className="brand"><span className="brand-mark">⌁</span><strong>loqo animations</strong><span className="chevron">⌄</span></button><button className="fit-button">自适应 <span>⌄</span></button></header><ShaderLogo settings={settings} imageFile={file} defaultLogo={defaultLogo} rendererRef={rendererRef}/><div className="stage-label">WebGL2 · React 重构预览</div></section>
     <aside className="control-panel"><header className="panel-header"><h1>设置</h1><div><IconButton label="重置设置" onClick={() => setSettings(defaults)}>↶</IconButton><IconButton label="导出 PNG" onClick={() => exportFile('png')}>⇩</IconButton><IconButton label="导出 WebM" onClick={() => exportFile('webm')}>{exporting ? '…' : '◉'}</IconButton></div></header><div className="panel-scroll">
       <EffectPicker effect={settings.effect} onChange={update('effect')}/>
       <section className="upload-card"><label className="upload"><input type="file" accept="image/png,image/svg+xml" onChange={event => setFile(event.target.files?.[0] || null)}/><span>▧&nbsp; 上传标志</span><small>（PNG / SVG）</small></label>{file && <p>{file.name}</p>}</section>

@@ -52,4 +52,122 @@ button[aria-pressed="true"] img { box-shadow: 0 0 0 2px #d4ff86, 0 0 18px rgba(1
 .parameter-slider { border-radius: 14px; overflow: hidden; background: #1a1d1b; }
 .parameter-slider-control { accent-color: #abff48; }
 .parameter-slider-content { background: linear-gradient(90deg, rgba(174,255,78,.12), transparent 64%); }
-* { scrollbar-color: #394138 transparent; scrollbar-width: thin; }
+/* Right workspace: compact, technical and specific to Motion Studio. */
+.control-panel {
+  background: #0b1014 !important;
+  border-color: #22303a !important;
+  color: #e9f0f3;
+}
+.control-panel > div:first-child {
+  min-height: 68px;
+  padding: 18px 20px !important;
+  border-color: #22303a !important;
+  background: linear-gradient(90deg, #0f181e, #0b1014) !important;
+}
+.control-panel > div:first-child h2 {
+  color: #dce9ee !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.control-panel > .flex-1 {
+  padding: 16px !important;
+  background-image: linear-gradient(rgba(113, 176, 197, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(113, 176, 197, .035) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.control-panel section {
+  gap: 12px !important;
+  padding: 14px !important;
+  border: 1px solid #22303a !important;
+  border-radius: 10px !important;
+  background: rgba(15, 24, 30, .92) !important;
+  box-shadow: none !important;
+}
+.control-panel section > h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #9eb4bf !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.control-panel section > h2::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6de0da;
+  box-shadow: 0 0 10px rgba(109, 224, 218, .8);
+  content: "";
+}
+.control-panel button[aria-pressed] {
+  border-radius: 8px !important;
+  border-color: #2b3c48 !important;
+  background: #121d24 !important;
+  box-shadow: none !important;
+}
+.control-panel button[aria-pressed="true"] {
+  border-color: #75d8d2 !important;
+  background: #d8f3f1 !important;
+  color: #0b1820 !important;
+}
+.control-panel button[aria-pressed="true"] img {
+  box-shadow: none !important;
+}
+.control-panel button[aria-pressed]:hover {
+  border-color: #63909b !important;
+  background: #192832 !important;
+}
+.control-panel button[aria-pressed="true"]:hover { background: #c6efeb !important; }
+.control-panel .parameter-slider {
+  border: 1px solid #253641 !important;
+  border-radius: 7px !important;
+  background: #101a20 !important;
+}
+.control-panel .parameter-slider-control,
+.control-panel .parameter-slider-control [data-slot="slider-track"] {
+  height: 36px !important;
+  border-radius: 6px !important;
+  background: #101a20 !important;
+}
+.control-panel .parameter-slider-control [data-slot="slider-range"] {
+  background: linear-gradient(90deg, #216c7a, #75d8d2) !important;
+}
+.control-panel .parameter-slider-content {
+  padding: 0 12px !important;
+  background: transparent !important;
+}
+.control-panel .parameter-slider-label {
+  color: #c5d4da !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+}
+.control-panel .parameter-slider-value {
+  color: #8de8df !important;
+  font-size: 11px !important;
+  font-weight: 750 !important;
+}
+.control-panel .parameter-slider-control [data-slot="slider-thumb"] {
+  width: 7px !important;
+  height: 22px !important;
+  background: #ddfffb !important;
+  box-shadow: 0 0 12px rgba(117, 216, 210, .55) !important;
+}
+.control-panel input[type="color"] {
+  border: 1px solid #405764 !important;
+  border-radius: 6px !important;
+  background: #101a20 !important;
+}
+.control-panel [data-slot="select-trigger"],
+.control-panel button:not([aria-pressed]) {
+  border-color: #2b3c48 !important;
+  border-radius: 7px !important;
+  background: #121d24 !important;
+}
+.control-panel [data-slot="select-trigger"]:hover,
+.control-panel button:not([aria-pressed]):hover { background: #192832 !important; }
+.control-panel .flex-1 > form,
+.control-panel .flex-1 > div > section + section { margin-top: 0 !important; }
+* { scrollbar-color: #385966 transparent; scrollbar-width: thin; }
